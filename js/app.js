@@ -1,9 +1,3 @@
-import { header } from './header.js';
-import { navbar } from './navbar.js';
-import { hero } from './hero.js';
-import { grid } from './grid.js';
-import { footer } from './footer.js';
-
 const API = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
   ? 'http://localhost:8000' : '';
 
@@ -20,12 +14,20 @@ async function loadDeals(){
   try{const r=await fetch(`${API}/api/deals`);return r.ok?await r.json():DEMO;}catch{return DEMO;}
 }
 
-async function render(){
-  const deals=await loadDeals();
-  const grouped=deals.reduce((a,d)=>{(a[d.category]=a[d.category]||[]).push(d);return a;},{});
-  let html=header()+navbar()+hero();
-  for(const[cat,prods]of Object.entries(grouped))html+=grid(prods,cat);
-  html+=footer();
-  document.getElementById('app').innerHTML=html;
+async function boot(){
+  const [{header},{navbar},{hero},{grid},{footer},{productCard}] = await Promise.all([
+    import('./header.js'), import('./navbar.js'), import('./hero.js'),
+    import('./grid.js'), import('./footer.js'), import('./card.js')
+  ]);
+  // grid.js uses card.js — patch global
+  window.__productCard = productCard;
+  const deals = await loadDeals();
+  const grouped = deals.reduce((a,d)=>{(a[d.category]=a[d.category]||[]).push(d);return a;},{});
+  let html = header()+navbar()+hero();
+  for(const [cat,prods] of Object.entries(grouped)) html += grid(prods,cat);
+  html += footer();
+  document.getElementById('app').innerHTML = html;
 }
-render();
+boot().catch(e=>{
+  document.getElementById('app').innerHTML = '<div style="padding:40px;text-align:center;color:red">Load error: '+e.message+'</div>';
+});

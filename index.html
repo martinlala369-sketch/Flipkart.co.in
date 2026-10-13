@@ -3,75 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Deals India — Curated Products</title>
-<meta name="description" content="Handpicked products with best prices. Amazon, Flipkart affiliate deals.">
+<title>Best Deals India - Flipkart Style Deals</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<script>tailwind.config={theme:{extend:{colors:{fkblue:'#2874f0',fkyellow:'#ff9f00',fkgrey:'#f1f3f6'}}}}</script>
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-gray-50 font-[Inter]">
-
-<!-- HEADER -->
-<header class="bg-white shadow-sm sticky top-0 z-50 border-b">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-    <div class="flex items-center gap-2">
-      <span class="text-2xl">🛍️</span>
-      <span class="font-extrabold text-xl bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Best Deals India</span>
-    </div>
-    <input type="text" id="search" placeholder="Search products..."
-           class="hidden md:block flex-1 max-w-md mx-4 px-4 py-2 border rounded-full text-sm outline-none focus:border-orange-400">
-    <div class="flex items-center gap-3">
-      <span class="text-sm font-medium">Deals</span>
-      <span class="text-sm font-medium">Categories</span>
-      <button class="bg-orange-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-orange-600">Subscribe</button>
-    </div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 px-4">
-  <div class="max-w-7xl mx-auto text-center">
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-3">Handpicked Deals. Real Prices.</h1>
-    <p class="text-lg opacity-90 mb-6">Amazon + Flipkart ke best products, ek jagah. Verified links only.</p>
-    <div class="flex gap-3 justify-center flex-wrap">
-      <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm">🔥 Today's Top 10</span>
-      <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm">💰 Under ₹500</span>
-      <span class="bg-white/20 px-4 py-1.5 rounded-full text-sm">⭐ 4.5+ Rated</span>
-    </div>
-  </div>
-</section>
-
-<!-- FILTERS -->
-<section class="max-w-7xl mx-auto px-4 mt-6">
-  <div class="flex gap-2 flex-wrap">
-    <button class="filter-btn active" data-cat="all">All</button>
-    <button class="filter-btn" data-cat="electronics">Electronics</button>
-    <button class="filter-btn" data-cat="fashion">Fashion</button>
-    <button class="filter-btn" data-cat="home">Home</button>
-    <button class="filter-btn" data-cat="books">Books</button>
-    <button class="filter-btn" data-cat="beauty">Beauty</button>
-  </div>
-</section>
-
-<!-- PRODUCTS GRID -->
-<section class="max-w-7xl mx-auto px-4 mt-6 mb-16">
-  <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    <!-- JS se aayega -->
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
-  <p>© 2026 Best Deals India. Affiliate links included.</p>
-  <p class="mt-2 text-xs">As an Amazon Associate, we earn from qualifying purchases.</p>
-  <div class="mt-3 flex gap-4 justify-center">
-    <a href="#" class="hover:text-white">Privacy</a>
-    <a href="#" class="hover:text-white">Terms</a>
-    <a href="#" class="hover:text-white">Contact</a>
-  </div>
-</footer>
-
-<script src="js/products.js"></script>
-<script src="js/main.js"></script>
+<body class="bg-fkgrey">
+<div id="app"></div>
+<script src="/js/app.js"></script>
 </body>
 </html>
